@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Dashboard – Alumni Connect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div>
+          <div class="sidebar-brand-title">Alumni Connect</div>
+          <div class="sidebar-brand-tag">Alumni Portal</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-item active">
+          <a href="alumni-dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#requests-section"><i class="fa-solid fa-inbox"></i> Requests</a>
+        </li>
+        <li class="sidebar-item">
+          <a href="alumni-sessions.html"><i class="fa-solid fa-calendar-check"></i> My Sessions</a>
+        </li>
+        <li class="sidebar-item">
+          <a href="profile.html"><i class="fa-solid fa-user-gear"></i> Profile</a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-badge-container">
+          <div class="user-avatar-sm" style="background: #e0e7ff; color: #4338ca;">AM</div>
+          <div class="user-info-text">
+            <div class="user-info-name">Aarav Mehta</div>
+            <div class="user-info-role">Alumni (Google)</div>
+          </div>
+        </div>
+        <button onclick="handleLogout()" class="btn btn-outline-primary btn-sm" style="width: 100%; margin-top: 0.85rem;">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-wrapper">
+      
+      <header class="top-header">
+        <div class="header-title-box">
+          <h1 id="alumniGreeting">Welcome back 👋</h1>
+          <span id="alumniSubheader" class="header-sub">Mentorship Management</span>
+        </div>
+
+        <div class="header-actions">
+          <div style="display: flex; align-items: center; gap: 0.5rem; background: var(--surface); padding: 0.35rem 0.75rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+            <label for="switchAlumniAccountSelect" style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); white-space: nowrap;">
+              <i class="fa-solid fa-user-gear" style="color: var(--primary);"></i> Alumni Profile:
+            </label>
+            <select id="switchAlumniAccountSelect" onchange="switchAlumniAccount(this.value)" style="border: none; background: transparent; font-weight: 700; color: var(--text-main); font-size: 0.85rem; cursor: pointer; outline: none;">
+              <!-- Populated dynamically via app.js -->
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <div class="content-area">
+        
+        <!-- Stats Row + Availability Toggle Card -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+          
+          <div class="stats-grid" style="margin-bottom: 0;">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fa-solid fa-inbox"></i></div>
+              <div>
+                <div class="stat-number" id="statNewRequestsCount">2</div>
+                <div class="stat-label">New Requests</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fa-solid fa-handshake"></i></div>
+              <div>
+                <div class="stat-number" id="statSessionsHostedCount">14</div>
+                <div class="stat-label">Sessions Hosted</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+              <div>
+                <div class="stat-number" id="statAvgRating">4.8 ★</div>
+                <div class="stat-label">Average Rating</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Availability Control Card -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">
+              Mentorship Status
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span id="availabilityStatusLabel" style="font-size: 1.2rem; font-weight: 800; color: var(--success);">ACTIVE</span>
+              <label class="switch">
+                <input type="checkbox" id="availabilityToggle" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <p style="font-size: 0.775rem; color: var(--text-muted); margin-top: 0.5rem;">
+              When ACTIVE, students can find and send mentorship requests to you.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Mentorship Requests Section -->
+        <section id="requests-section" class="card">
+          <div class="card-header-flex">
+            <div>
+              <h2 class="card-title">Incoming Student Requests</h2>
+              <p style="color: var(--text-muted); font-size: 0.85rem;">Review requests submitted by current students</p>
+            </div>
+            <span class="badge badge-pending"><i class="fa-solid fa-clock"></i> Pending Action</span>
+          </div>
+
+          <div id="alumniRequestsList">
+            <!-- Dynamically populated via app.js -->
+          </div>
+        </section>
+
+        <!-- Student Feedback & Reviews Section -->
+        <section class="card" style="margin-top: 1.75rem;">
+          <div class="card-header-flex">
+            <div>
+              <h2 class="card-title">Received Student Reviews & Feedback</h2>
+              <p style="color: var(--text-muted); font-size: 0.85rem;">Ratings and reviews submitted by students after mentorship sessions</p>
+            </div>
+            <span class="badge badge-accepted"><i class="fa-solid fa-star"></i> Student Ratings</span>
+          </div>
+
+          <div id="alumniFeedbackList">
+            <!-- Dynamically populated via app.js -->
+          </div>
+        </section>
+
+      </div>
+
+      <footer class="main-footer">
+        <div>Alumni Connect • Alumni Network & Mentorship Matching Platform</div>
+        <div>Tagline: <strong>Match • Mentor • Grow</strong></div>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

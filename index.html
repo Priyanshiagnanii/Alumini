@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Connect – Alumni Network & Mentorship Matching System</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Landing Top Navbar -->
+  <nav class="landing-nav">
+    <div class="landing-brand">
+      <div class="sidebar-brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div>
+        <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); line-height: 1;">Alumni Connect</h2>
+        <span class="sidebar-brand-tag">Match • Mentor • Grow</span>
+      </div>
+    </div>
+
+    <ul class="landing-nav-links">
+      <li><a href="index.html" style="color: var(--primary);">Home</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#mentors">Top Mentors</a></li>
+    </ul>
+
+    <div style="display: flex; gap: 0.75rem;">
+      <a href="signup.html" class="btn btn-outline-primary">
+        <i class="fa-solid fa-user-plus"></i> Sign Up
+      </a>
+      <button class="btn btn-outline-primary" onclick="openLoginModal('student')">
+        <i class="fa-solid fa-user-graduate"></i> Student Login
+      </button>
+      <button class="btn btn-primary" onclick="openLoginModal('alumni')">
+        <i class="fa-solid fa-user-tie"></i> Alumni Login
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-pill">
+      <i class="fa-solid fa-sparkles"></i> Professional Mentorship & Alumni Network
+    </div>
+    <h1 class="hero-title">
+      Find the right mentor.<br>
+      <span>Grow with guidance.</span>
+    </h1>
+    <p class="hero-subtitle">
+      Connect directly with experienced college alumni for personalized technical mentorship, 
+      technical project reviews, career advice, and interview preparation.
+    </p>
+
+    <div class="hero-ctas">
+      <button class="btn btn-primary btn-lg" onclick="openLoginModal('student')">
+        <i class="fa-solid fa-user-graduate"></i> I'm a Student
+      </button>
+      <button class="btn btn-secondary btn-lg" onclick="openLoginModal('alumni')">
+        <i class="fa-solid fa-user-tie"></i> I'm an Alumni
+      </button>
+    </div>
+  </section>
+
+  <!-- Live DBMS Statistics Banner -->
+  <section style="max-width: 1100px; margin: -2rem auto 4rem; padding: 0 1.5rem; position: relative; z-index: 10;">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+        <div>
+          <div class="stat-number" id="statActiveMentors">5</div>
+          <div class="stat-label">Active Alumni Mentors</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-paper-plane"></i></div>
+        <div>
+          <div class="stat-number" id="statRequests">4</div>
+          <div class="stat-label">Mentorship Requests</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+        <div>
+          <div class="stat-number" id="statSessions">3</div>
+          <div class="stat-label">Sessions Completed</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+        <div>
+          <div class="stat-number">4.8 ★</div>
+          <div class="stat-label">Average Session Rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 3.5rem;">
+      <span style="font-weight: 700; color: var(--primary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Step-by-Step Workflow</span>
+      <h2 style="font-size: 2.25rem; font-weight: 800; color: var(--text-main); margin-top: 0.5rem;">How Alumni Connect Works</h2>
+      <p style="color: var(--text-muted); max-width: 550px; margin: 0.5rem auto 0;">Seamless 4-step mentorship matching system designed for student & alumni collaboration.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.75rem;">
+      <div class="card" style="text-align: center; padding: 2rem 1.5rem;">
+        <div style="width: 54px; height: 54px; background: var(--primary-light); color: var(--primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 800; margin: 0 auto 1.25rem;">1</div>
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Submit Request</h3>
+        <p style="font-size: 0.875rem; color: var(--text-muted);">Select your target domain (Database & Systems, Data Science, Web Dev) and detail your query.</p>
+      </div>
+
+      <div class="card" style="text-align: center; padding: 2rem 1.5rem;">
+        <div style="width: 54px; height: 54px; background: var(--primary-light); color: var(--primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 800; margin: 0 auto 1.25rem;">2</div>
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Find a Mentor</h3>
+        <p style="font-size: 0.875rem; color: var(--text-muted);">Our matching algorithm highlights top-rated active alumni specialized in your chosen field.</p>
+      </div>
+
+      <div class="card" style="text-align: center; padding: 2rem 1.5rem;">
+        <div style="width: 54px; height: 54px; background: var(--primary-light); color: var(--primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 800; margin: 0 auto 1.25rem;">3</div>
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Schedule Session</h3>
+        <p style="font-size: 0.875rem; color: var(--text-muted);">Once accepted, pick an open time slot without scheduling conflicts to meet virtually.</p>
+      </div>
+
+      <div class="card" style="text-align: center; padding: 2rem 1.5rem;">
+        <div style="width: 54px; height: 54px; background: var(--primary-light); color: var(--primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 800; margin: 0 auto 1.25rem;">4</div>
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Give Feedback</h3>
+        <p style="font-size: 0.875rem; color: var(--text-muted);">Provide 1-5 star ratings and reviews to build verified alumni reputation scores.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Top Mentors Section -->
+  <section id="mentors" style="padding: 4rem 2rem; background: var(--surface-secondary);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="card-header-flex">
+        <div>
+          <h2 style="font-size: 1.8rem; font-weight: 800;">Featured Alumni Mentors</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Highest-rated alumni available for 1-on-1 sessions</p>
+        </div>
+        <button class="btn btn-outline-primary" onclick="openLoginModal('student')">
+          View All Alumni Mentors <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div id="topMentorsGrid" class="mentors-grid">
+        <!-- Dynamically rendered by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Landing Footer -->
+  <footer class="landing-footer">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="landing-footer-grid">
+        <div>
+          <div class="landing-brand" style="margin-bottom: 1rem;">
+            <div class="sidebar-brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3 style="font-weight: 800; font-size: 1.2rem;">Alumni Connect</h3>
+          </div>
+          <p style="color: var(--text-light); font-size: 0.875rem; line-height: 1.6;">
+            Connecting college students with experienced industry alumni for 1-on-1 mentorship, 
+            career guidance, code reviews, and placement preparation.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="font-weight: 700; margin-bottom: 1rem;">Platform Features</h4>
+          <ul style="list-style: none; color: var(--text-light); font-size: 0.875rem; line-height: 2;">
+            <li>🔹 Verified Alumni Profiles</li>
+            <li>🔹 Domain Mentorship Matching</li>
+            <li>🔹 Real-time Slot Scheduling</li>
+            <li>🔹 Virtual Meeting Room Integrations</li>
+            <li>🔹 Star Rating & Review Feedback</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-weight: 700; margin-bottom: 1rem;">Quick Navigation</h4>
+          <ul style="list-style: none; color: var(--text-light); font-size: 0.875rem; line-height: 2;">
+            <li><a href="student-dashboard.html" style="color: var(--text-light);">Student Dashboard</a></li>
+            <li><a href="alumni-dashboard.html" style="color: var(--text-light);">Alumni Dashboard</a></li>
+            <li><a href="requests.html" style="color: var(--text-light);">Requests List</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="landing-footer-bottom">
+        <div>© 2026 Alumni Connect. All rights reserved.</div>
+        <div>Tagline: <strong>Match • Mentor • Grow</strong></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login Modal Dialog -->
+  <div id="loginModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Sign In to Alumni Connect</h3>
+          <p style="font-size: 0.825rem; color: var(--text-muted);">Choose account type for demo session</p>
+        </div>
+        <button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form onsubmit="handleLoginSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Select Login Role</label>
+          <select id="loginRoleSelect" class="form-select" onchange="onLoginRoleChange(this.value)">
+            <option value="student">Student</option>
+            <option value="alumni">Alumni Mentor</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="loginName" class="form-control" value="Priyanshi Sharma" placeholder="Enter your full name" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="loginEmail" class="form-control" value="priyanshi.sharma@college.edu" placeholder="Enter your email" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" value="••••••••" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+          <i class="fa-solid fa-right-to-bracket"></i> Continue to Dashboard
+        </button>
+
+        <div style="margin-top: 1.25rem; text-align: center; font-size: 0.85rem; color: var(--text-muted);">
+          Don't have an account yet? 
+          <a href="signup.html" style="font-weight: 700; color: var(--primary);">Sign Up here</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

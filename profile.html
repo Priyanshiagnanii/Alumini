@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile – Alumni Connect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div>
+          <div class="sidebar-brand-title">Alumni Connect</div>
+          <div class="sidebar-brand-tag">User Portal</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-item">
+          <a href="student-dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+        </li>
+        <li class="sidebar-item">
+          <a href="requests.html"><i class="fa-solid fa-paper-plane"></i> My Requests</a>
+        </li>
+        <li class="sidebar-item">
+          <a href="sessions.html"><i class="fa-solid fa-calendar-check"></i> My Sessions</a>
+        </li>
+        <li class="sidebar-item">
+          <a href="feedback.html"><i class="fa-solid fa-star"></i> Feedback</a>
+        </li>
+        <li class="sidebar-item active">
+          <a href="profile.html"><i class="fa-solid fa-user-gear"></i> Profile</a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-badge-container">
+          <div class="user-avatar-sm">PS</div>
+          <div class="user-info-text">
+            <div class="user-info-name">Priyanshi Sharma</div>
+            <div class="user-info-role">Student (2026)</div>
+          </div>
+        </div>
+        <button onclick="handleLogout()" class="btn btn-outline-primary btn-sm" style="width: 100%; margin-top: 0.85rem;">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-wrapper">
+      
+      <header class="top-header">
+        <div class="header-title-box">
+          <h1>My Profile Settings</h1>
+          <span class="header-sub">View and manage profile parameters (STUDENTS / ALUMNI Entity)</span>
+        </div>
+      </header>
+
+      <div class="content-area" style="max-width: 750px;">
+        
+        <div class="card">
+          <div style="display: flex; align-items: center; gap: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="user-avatar-sm" style="width: 72px; height: 72px; font-size: 1.75rem;">PS</div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <h2 id="profileName" style="font-size: 1.4rem; font-weight: 800;">Priyanshi Sharma</h2>
+                <span id="profileRoleBadge" class="badge badge-accepted">STUDENT</span>
+              </div>
+              <p id="profileEmail" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.2rem;">priyanshi.sharma@college.edu</p>
+            </div>
+          </div>
+
+          <form onsubmit="event.preventDefault(); showToast('Profile details updated successfully!', 'success');">
+            
+            <div id="profileExtraDetails">
+              <!-- Dynamically populated via app.js -->
+            </div>
+
+            <div style="text-align: right; margin-top: 1rem;">
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-floppy-disk"></i> Save Profile Changes
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <footer class="main-footer">
+        <div>Alumni Connect • Alumni Network & Mentorship Matching Platform</div>
+        <div>Tagline: <strong>Match • Mentor • Grow</strong></div>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

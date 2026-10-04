@@ -1,0 +1,12 @@
+{
+  "name": "alumni-connect",
+  "version": "1.0.0",
+  "description": "ALUMNI CONNECT - Alumni Network & Mentorship Matching Platform",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve -l 3000 ."
+  },
+  "keywords": ["alumni", "mentorship", "networking", "frontend"],
+  "author": "",
+  "license": "ISC"
+}

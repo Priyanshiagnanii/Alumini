@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login – Alumni Connect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: radial-gradient(circle at 50% 0%, #f3e8ff 0%, #f8fafc 80%); padding: 1.5rem;">
+
+  <div class="card" style="width: 100%; max-width: 440px; padding: 2.5rem; box-shadow: var(--shadow-xl);">
+    
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <div class="sidebar-brand-icon" style="margin: 0 auto 1rem; width: 50px; height: 50px; font-size: 1.4rem;">
+        <i class="fa-solid fa-graduation-cap"></i>
+      </div>
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main);">Alumni Connect</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Match • Mentor • Grow</p>
+    </div>
+
+    <!-- Role Switcher Tabs -->
+    <div class="role-switcher-pills" style="margin-bottom: 1.5rem; display: flex; justify-content: center;">
+      <button type="button" class="role-pill active" id="tabStudent" onclick="switchLoginRole('student')">
+        <i class="fa-solid fa-user-graduate"></i> Student
+      </button>
+      <button type="button" class="role-pill" id="tabAlumni" onclick="switchLoginRole('alumni')">
+        <i class="fa-solid fa-user-tie"></i> Alumni
+      </button>
+    </div>
+
+    <form onsubmit="handleStandaloneLogin(event)">
+      <input type="hidden" id="activeRole" value="student">
+      
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input type="text" id="standaloneName" class="form-control" value="Priyanshi Sharma" placeholder="Enter your full name" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" id="standaloneEmail" class="form-control" value="priyanshi.sharma@college.edu" placeholder="Enter your email" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" value="••••••••" required />
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.85rem;">
+        <label style="display: flex; align-items: center; gap: 0.4rem; color: var(--text-muted); cursor: pointer;">
+          <input type="checkbox" checked /> Remember me
+        </label>
+        <a href="#" style="font-weight: 600;" onclick="showToast('Frontend Demo Mode: Password reset not required!', 'info')">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.8rem;">
+        <i class="fa-solid fa-right-to-bracket"></i> Login to Demo Account
+      </button>
+    </form>
+
+    <div style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--border); text-align: center;">
+      <p style="font-size: 0.8rem; color: var(--text-muted);">
+        <i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> 
+        Frontend Mock Demo – No backend auth required.
+      </p>
+      <a href="index.html" style="font-size: 0.85rem; font-weight: 700; margin-top: 0.5rem; display: inline-block;">
+        ← Return to Landing Page
+      </a>
+    </div>
+
+  </div>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function switchLoginRole(role) {
+      document.getElementById('activeRole').value = role;
+      document.querySelectorAll('.role-pill').forEach(btn => btn.classList.remove('active'));
+      
+      const nameInput = document.getElementById('standaloneName');
+      const emailInput = document.getElementById('standaloneEmail');
+
+      if (role === 'student') {
+        document.getElementById('tabStudent').classList.add('active');
+        if (nameInput) nameInput.value = 'Priyanshi Sharma';
+        if (emailInput) emailInput.value = 'priyanshi.sharma@college.edu';
+      } else {
+        document.getElementById('tabAlumni').classList.add('active');
+        if (nameInput) nameInput.value = 'Neha Rastogi';
+        if (emailInput) emailInput.value = 'neha.rastogi@gmail.com';
+      }
+    }
+
+    function handleStandaloneLogin(event) {
+      event.preventDefault();
+      const role = document.getElementById('activeRole').value;
+      const name = document.getElementById('standaloneName').value || (role === 'student' ? 'Priyanshi Sharma' : 'Aarav Mehta');
+      const email = document.getElementById('standaloneEmail').value;
+
+      if (role === 'student') {
+        setCurrentUserRole('student', 101, name, email);
+        showToast(`Welcome back, ${name.split(' ')[0]}! Redirecting to Student Dashboard...`, 'success');
+        setTimeout(() => window.location.href = 'student-dashboard.html', 800);
+      } else {
+        setCurrentUserRole('alumni', 201, name, email);
+        showToast(`Welcome back, ${name.split(' ')[0]}! Redirecting to Alumni Dashboard...`, 'success');
+        setTimeout(() => window.location.href = 'alumni-dashboard.html', 800);
+      }
+    }
+  </script>
+</body>
+</html>
